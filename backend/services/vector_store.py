@@ -1,15 +1,22 @@
 import faiss
 import numpy as np
-from sentence_transformers import SentenceTransformer
 from typing import List, Dict
 
 class ResourceVectorStore:
     def __init__(self):
-        # Load a lightweight, fast open-source embedding model
-        self.encoder = SentenceTransformer('all-MiniLM-L6-v2')
+        # Lazy-load: don't download the model until it's actually needed
+        self._encoder = None
         self.dimension = 384 # Embedding size for MiniLM
         self.index = faiss.IndexFlatL2(self.dimension)
         self.metadata_store = [] # Acts as our mock database for resource URLs
+
+    @property
+    def encoder(self):
+        """Load the SentenceTransformer model only when first accessed."""
+        if self._encoder is None:
+            from sentence_transformers import SentenceTransformer
+            self._encoder = SentenceTransformer('all-MiniLM-L6-v2')
+        return self._encoder
         
     def seed_initial_data(self, resources: List[Dict[str, str]]):
         """Seeds the FAISS index with learning materials (Courses, Docs, etc.)."""
