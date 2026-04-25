@@ -1,0 +1,57 @@
+# ==================== ENVIRONMENT & SECRETS ====================
+.env
+.env.*
+!.env.example
+
+# ==================== PYTHON ====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+
+# ==================== VIRTUAL ENVIRONMENTS ====================
+venv/
+env/
+.venv/
+jdagent/
+
+# ==================== IDEs & EDITORS ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ==================== OS FILES ====================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==================== DATABASE ====================
+*.db
+*.sqlite3
+
+# ==================== VECTOR STORE / ML ====================
+*.faiss
+index.faiss
+*.pkl
+*.bin
+*.h5
+*.pt
+*.onnx
+
+# ==================== LOGS & TEMP ====================
+*.log
+tmp/
+temp/
+
+# ==================== AGENTS MEMORY BANK ====================
+.agents/
