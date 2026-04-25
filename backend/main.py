@@ -11,7 +11,7 @@ app = FastAPI(
 # Configure CORS for local development (Frontend running on typical Streamlit port 8501)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8501"], 
+    allow_origins=["*"],  # Update to your Render frontend URL in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

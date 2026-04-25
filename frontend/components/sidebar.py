@@ -1,7 +1,9 @@
 import streamlit as st
 import requests
+import os
 
-API_URL = "http://localhost:8000/api/v1/ingest/upload"
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+API_URL = f"{BACKEND_URL}/api/v1/ingest/upload"
 
 def render_sidebar():
     with st.sidebar:

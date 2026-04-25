@@ -2,7 +2,10 @@ import streamlit as st
 import requests
 import plotly.express as px
 import pandas as pd
+import os
 from components.roadmap_view import render_roadmap
+
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 
 def render_results():
     st.success("Here is your personalized skill breakdown and learning roadmap.")
@@ -73,7 +76,7 @@ def render_results():
             }
             
             try:
-                response = requests.post(f"http://localhost:8000/api/v1/dashboard/generate-roadmap?target_role={target_role}", json=payload)
+                response = requests.post(f"{BACKEND_URL}/api/v1/dashboard/generate-roadmap?target_role={target_role}", json=payload)
                 if response.status_code == 200:
                     st.session_state.final_roadmap = response.json()["data"]
                 else:

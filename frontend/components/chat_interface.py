@@ -1,7 +1,9 @@
 import streamlit as st
 import requests
+import os
 
-API_URL = "http://localhost:8000/api/v1/assessment/chat-turn"
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+API_URL = f"{BACKEND_URL}/api/v1/assessment/chat-turn"
 
 def render_chat():
     skill = st.session_state.current_skill_testing
