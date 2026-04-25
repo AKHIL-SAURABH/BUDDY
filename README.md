@@ -1,4 +1,9 @@
 # BUDDY: AI-Powered Skill Assessment & Personalised Learning Plan Agent
+<p align="center">
+  <img src="https://github.com/AKHIL-SAURABH/BUDDY/blob/main/Screenshots/Gemini_Generated_Image_eoe9rheoe9rheoe9.png" 
+       alt="Banner Image" 
+       width="400"/>
+</p>
 
 ## Live Links
 
@@ -59,7 +64,7 @@ async def process_initial_upload(jd_text: str, resume_pdf_bytes: bytes) -> dict:
         "skill_mapping": skill_mapping.model_dump()
     }
 ```
-Functionality: This function orchestrates the first major workflow. It parses the PDF, concurrently queries the LLM to extract structured data from both the JD and the resume, and then maps the candidate's skills to the JD's requirements to identify matched, missing, and adjacent skills.
+**Functionality:** This function orchestrates the first major workflow. It parses the PDF, concurrently queries the LLM to extract structured data from both the JD and the resume, and then maps the candidate's skills to the JD's requirements to identify matched, missing, and adjacent skills.
 
 ### Phase 2: Pre-Assessment Analysis
 Before jumping into an interview, the user is presented with a summary of their baseline skill match based purely on document analysis.
@@ -84,7 +89,7 @@ async def map_skills(jd_data: JobDescriptionData, resume_data: CandidateCapabili
     )
     return SkillGraphMapping(**json.loads(response.choices[0].message.content))
 ```
-Functionality: The skill mapper agent compares the extracted candidate skills against the job requirements and categorizes them. This powers the visual summary page where users see their JD Match Strength percentage before beginning the live assessment.
+**Functionality:** The skill mapper agent compares the extracted candidate skills against the job requirements and categorizes them. This powers the visual summary page where users see their JD Match Strength percentage before beginning the live assessment.
 
 ### Phase 3: Conversational Assessment
 BUDDY acts as a technical interviewer, dynamically generating questions based on the skill being tested and adjusting difficulty based on the candidate's previous answers.
@@ -110,7 +115,7 @@ Key Code: Assessment Agent (`backend/agents/assessment_agent.py`)
         5. Don't ask more than 6 questions in total.
         """
 ```
-Functionality: This prompt dictates the state machine of the interview. The agent evaluates the user's answer, scores it, dictates the next difficulty level, and decides whether enough data has been collected to terminate the assessment (capped at 6 questions).
+**Functionality:** This prompt dictates the state machine of the interview. The agent evaluates the user's answer, scores it, dictates the next difficulty level, and decides whether enough data has been collected to terminate the assessment (capped at 6 questions).
 
 ### Phase 4: Results & Personalised Learning Plan
 Once the assessment concludes, BUDDY generates a visual gap analysis using the tracked scores and queried a FAISS vector database to build a tailored learning roadmap.
@@ -137,7 +142,7 @@ class ResourceVectorStore:
             self._encoder = SentenceTransformer('all-MiniLM-L6-v2')
         return self._encoder
 ```
-Functionality: Because embedding models are heavy, the `SentenceTransformer` is lazy-loaded. This ensures the backend boots instantly upon deployment without timing out, only downloading and loading the model into memory when a roadmap actually needs to be generated.
+**Functionality:** Because embedding models are heavy, the `SentenceTransformer` is lazy-loaded. This ensures the backend boots instantly upon deployment without timing out, only downloading and loading the model into memory when a roadmap actually needs to be generated.
 
 ![Learning Roadmap](https://github.com/AKHIL-SAURABH/BUDDY/blob/main/Screenshots/Screenshot%202026-04-26%20002601.jpg)
 
