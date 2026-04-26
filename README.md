@@ -28,11 +28,7 @@ BUDDY solves this problem by providing an end-to-end multi-agent pipeline. Inste
 
 ## 🎥 Demo Video
 
-<p align="center">
-  <a href="https://github.com/AKHIL-SAURABH/BUDDY/raw/main/Screenshots/demo.mp4">
-    <img src="https://img.youtube.com/vi/ij9lEzQNZl4/0.jpg" width="600">
-  </a>
-</p>
+https://github.com/AKHIL-SAURABH/BUDDY/raw/main/Screenshots/demo.mp4
 
 ---
 
